@@ -4,11 +4,11 @@ import UserReducer from '../reducers/UserReducer';
 
 
 const initialState = {
-   user: UserReducer()
+   userData: UserReducer()
 };
 
 const MainReducer = (state, action) => ({
-   user: UserReducer(state.user, action)
+   userData: UserReducer(state.userData, action)
 });
 
 export const StateContext = createContext(initialState);

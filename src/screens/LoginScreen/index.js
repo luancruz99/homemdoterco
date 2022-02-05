@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import database from '@react-native-firebase/database';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,6 +19,9 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const ref_input2 = useRef();
+
 
   const loginUser = async () => {
     
@@ -72,6 +75,9 @@ return (
       <TextInput
         placeholder='Digite seu email'
         style={styles.input}
+        returnKeyType = {'next'}
+        onSubmitEditing={() => ref_input2.current.focus()}
+        blurOnSubmit={false}
         keyboardType='email-address'
         onChangeText={(text) => setEmail(text)}
         value={email}
@@ -80,6 +86,7 @@ return (
       <TextInput
         placeholder='Senha'
         style={styles.input}
+        ref={ref_input2}
         secureTextEntry={true}
         onChangeText={(text) => setPassword(text)}
         value={password}

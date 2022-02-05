@@ -5,6 +5,7 @@ import { StateProvider } from './contexts/StateContext';
 
 import AuthStack from './stacks/AuthStack';
 import MainStack from './stacks/MainStack';
+import DioceseTab from './stacks/DioceseTab';
 
 
 export default function homemdoterco (){
@@ -12,7 +13,7 @@ export default function homemdoterco (){
 
     <StateProvider>
         <NavigationContainer>
-            <AuthStack />  
+            <AuthStack />
         </NavigationContainer>
     </StateProvider>        
 

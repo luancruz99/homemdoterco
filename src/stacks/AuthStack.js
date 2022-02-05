@@ -10,18 +10,9 @@ const Stack = createStackNavigator();
 export default () => {
    return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-         <Stack.Screen 
-            name="PreloadScreen" 
-            component={PrealoadScreen}
-         />
-         <Stack.Screen 
-            name="LoginScreen" 
-            component={LoginScreen}
-         />
-         <Stack.Screen 
-            name="MainStack" 
-            component={MainStack}
-         />
+         <Stack.Screen name="PreloadScreen" component={PrealoadScreen}/>
+         <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+         <Stack.Screen name="MainStack" component={MainStack}/>
       </Stack.Navigator>
    );
 };
