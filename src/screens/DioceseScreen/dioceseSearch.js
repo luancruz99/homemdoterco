@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { useStateValue } from '../../contexts/StateContext';
-import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import database from '@react-native-firebase/database'
 import {
    ScrollView,
    SafeAreaView,
@@ -12,42 +12,61 @@ import {
    TextInput,
    FlatList
 }
-   from 'react-native'
-
-import api from '../../services/api';
-import database from '@react-native-firebase/database'
-
-import Background from '../../components/background';
+from 'react-native'
+import LinearGradient from 'react-native-linear-gradient';
 import { styles } from '../../styles';
+
+import AbreviateStates from '../../components/AbbreviateStates'
+import Background from '../../components/background';
+
 
 export default () => {
    const navigation = useNavigation();
    const [context, dispatch] = useStateValue();
-   const [lista, setLista] = useState([]);
+   const [list, setList] = useState();
+   const [searchText, setSearchText] = useState('');
+   
+   
 
    useEffect(() => {
+      let orderState;
       database().ref('/bd/diocese').on('value', (snapshot) => {
-         let state = lista;
-         state = [];
+         let state = [];
 
          snapshot.forEach((childItem) => {
             state.push({
                token: childItem.val().token,
                name: childItem.val().name,
-               cep: childItem.val().cep,
                estado: childItem.val().estado,
                cidade: childItem.val().cidade,
-               bairro: childItem.val().bairro,
-               endereco: childItem.val().endereco,
-               numero: childItem.val().numero,
-
+               imageUrl: childItem.val().imageUrl,
             });
-            console.log(state);
-
+            orderState = state;
          });
-         setLista(state);
+         
+         state.length>1?orderState.sort((a,b)=>(a.name>b.name)?1:(b.name>a.name)?-1:0):'';
+         
+         
+         if (searchText === '') {
+            setList(orderState);
+         } else {
+            setList(
+               orderState.filter(item => {
+                  if (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                     return true;
+                  } else if (item.cidade.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                     return true;
+                  } else {
+                     return false;
+                  }
+               })
+            );
+         }
       });
-   }, []);
+
+   }, [searchText]);
+
+
 
 
    return (
@@ -63,19 +82,25 @@ export default () => {
             <Image style={styles.smallLogo} source={require('../../assets/logo_diocese.png')} />
          </View>
 
-         <TextInput style={styles.input} placeholder='Digite um nome...' />
+         <TextInput
+            style={styles.input}
+            placeholder='Digite um nome'
+            value={searchText}
+            onChangeText={(t) => { setSearchText(t) }}
+         />
 
          <View style={styles.searchArea}>
             <FlatList
-               data={lista}
+               data={list}
                renderItem={({ item }) => {
                   return (
                      <View>
-                        <TouchableOpacity style={styles.searchResultArea}>
-                           <View style={styles.resultImageArea}><Image style={styles.resultImage} source={require('../../assets/paroquia.png')} /></View>
+                        <TouchableOpacity onPress={()=>{navigation.navigate('InfoScreen', {item})}} style={styles.searchResultArea}>
+                           <View style={styles.resultImageArea}><Image style={styles.resultImage} source={{uri:item.imageUrl}} /></View>
+                           
                            <View style={styles.resultTextArea}>
                               <Text style={styles.restultText}>{item.name}</Text>
-                              <Text style={styles.resultSubText}>{item.cidade} - {item.estado}</Text>
+                              <Text style={styles.resultSubText}>{item.cidade} - {AbreviateStates(item.estado)}</Text>
                            </View>
                         </TouchableOpacity>
                         <View style={styles.resultSeparator} />
@@ -83,7 +108,7 @@ export default () => {
                   );
                }}
             />
-
+         
          </View>
 
 

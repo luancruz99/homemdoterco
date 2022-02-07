@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
       marginRight: 10,
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 2,
+      borderWidth: 0.55,
    },
 
    
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
    
    resultSeparator:{
       width: '80%',
-      borderWidth: 0.6,
+      borderTopWidth: 0.55,
       alignSelf: 'center',
       borderColor: '#0000002f',
    },
@@ -180,8 +180,9 @@ const styles = StyleSheet.create({
    },
    
    resultImage:{
-      width: '80%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
+      borderRadius: 75,
    },
    //Input_______________________________
    input: {
@@ -197,30 +198,30 @@ const styles = StyleSheet.create({
 
    halfRegister: {
       width: '42%',
-      borderBottomColor: '#696969',
-      borderBottomWidth: 0.4,
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
       marginLeft:10,
       marginRight: 10,
    },
 
    nameRegister: {
       width: '90%',
-      borderBottomColor: '#696969',
-      borderBottomWidth: 0.4,
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
       alignSelf: 'center',
    },
 
    adressRegister: {
       width: '64%',
-      borderBottomColor: '#696969',
-      borderBottomWidth: 0.4,
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
       marginRight: 10,
    },
 
    numberRegister: {
       width: '20%',
-      borderBottomColor: '#696969',
-      borderBottomWidth: 0.4,
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
       marginLeft: 10,
    },
 
