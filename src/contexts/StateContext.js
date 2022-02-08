@@ -1,14 +1,15 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
 import UserReducer from '../reducers/UserReducer';
-
+import ObjectReducer from '../reducers/ObjectReducer';
 
 const initialState = {
-   userData: UserReducer()
+   data: UserReducer(),
 };
 
 const MainReducer = (state, action) => ({
-   userData: UserReducer(state.userData, action)
+   data: UserReducer(state.data, action),
+   objectData: ObjectReducer(state.data, action),
 });
 
 export const StateContext = createContext(initialState);

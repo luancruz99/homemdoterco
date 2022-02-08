@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import dioceseSearch from '../screens/DioceseScreen/dioceseSearch';
 import dioceseRegister from '../screens/DioceseScreen/dioceseRegister';
 import HomeScreen from '../screens/HomeScreen';
-import InfoScreen from '../screens/InfoScreen'
+
 
 import CustomTabBar from '../components/CustomTabBar';
 

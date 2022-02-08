@@ -10,7 +10,7 @@ import {
 }
 from 'react-native'
 import { color } from "react-native-reanimated";
-import FontAwesome from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/Ionicons';
 import { useStateValue } from '../contexts/StateContext';
 
 
@@ -61,17 +61,29 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
 
             switch (route.name) {
                case 'DioceseTabRegister':
-                  iconName = 'plus-square'
+                  iconName = 'add-circle-outline';
                   break;
                case 'HomeScreen':
-                  iconName = 'home'
+                  iconName = 'ios-home';
                   break;
                case 'DioceseTabSearch':
-                  iconName = 'search'
+                  iconName = 'ios-search';
+                  break;
+               case 'ObjectInfo':
+                  iconName = 'ios-information-circle-outline';
+                  break;
+               case 'ObjectUser':
+                  iconName = 'person-circle-outline';
+                  break;
+               case 'ObjectEvent':
+                  iconName = 'calendar-outline';
+                  break;
+               case 'ObjectChild':
+                  iconName = 'heart-outline';
                   break;
             }
 
-            if (context.userData.user.token != 'master' || keyboardOpen) {
+            if (context.data.user.token != 'master' || keyboardOpen) {
 
                
                return (null);
@@ -89,7 +101,7 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
                } else {
                   return (
                      <TouchableOpacity key={index} activeOpacity={1} underlayColor='transparent' style={styles.tab} onPress={handleTabPress}>
-                        <FontAwesome name={iconName} size={isFocused ? 45 : 40} color={isFocused ? '#000' : '#ccc'} />
+                        <FontAwesome name={iconName} size={isFocused ? 50 : 45} color={isFocused ? '#000' : '#ccc'} />
 
                         <Text style={[styles.label, isFocused ? styles.labelFocused : null]}>{label}</Text>
                      </TouchableOpacity>

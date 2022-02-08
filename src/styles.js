@@ -1,9 +1,13 @@
+import { normalizeUnits } from "moment";
 import { StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
 
 const styles = StyleSheet.create({
    //View______________________________
    container: {
+      flex: 1,
+      backgroundColor: '#fff'
+   },
+   container2: {
       flex: 1,
    },
    
@@ -44,14 +48,13 @@ const styles = StyleSheet.create({
    menuArea: {
       flex: 1,
       width: '92%',
+      height: '100%',
       alignSelf: 'center',
       backgroundColor: '#fff',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
+      borderRadius: 10,
    },
 
    menuSubArea: {
-      flex: 1,
       flexDirection: 'row',
       paddingTop: 15,
       paddingBottom: 15,
@@ -85,6 +88,7 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 20,
       marginTop: 10,
    },
+   
 
    registerArea: {
       flex: 1,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
  
    },
    
-   RegisterArea:{
+   RegisterArea: {
       flexDirection: 'row',
       justifyContent: "center",
       width: '100%'
@@ -120,7 +124,7 @@ const styles = StyleSheet.create({
       marginBottom: 15,
    },
 
-   resultImageArea:{
+   resultImageArea: {
       width: 100,
       height: 100,
       borderRadius: 50,
@@ -132,7 +136,7 @@ const styles = StyleSheet.create({
    },
 
    
-   resultTextArea:{
+   resultTextArea: {
       height: '100%',
       flex: 1,
       borderLeftWidth: 0.55,
@@ -141,11 +145,30 @@ const styles = StyleSheet.create({
    },
    
    
-   resultSeparator:{
+   resultSeparator: {
       width: '80%',
       borderTopWidth: 0.55,
       alignSelf: 'center',
       borderColor: '#0000002f',
+   },
+
+   infoArea: {
+      width: '95%',
+      height: '100%',
+      backgroundColor: '#f5f5f5',
+      alignSelf: 'center',
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      position: 'absolute',
+      top: 200,
+      borderWidth: 1,
+      borderColor: '#00000008',
+      
+   },
+
+   infoObjectArea: {
+      height: 150,
+      width: '100%',
    },
    
    //Image_______________________________
@@ -155,7 +178,7 @@ const styles = StyleSheet.create({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: 60,
-     marginBottom: 40,
+      marginBottom: 40,
      
    },
 
@@ -183,6 +206,11 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
       borderRadius: 75,
+   },
+
+   infoImage: {
+      width: '100%', 
+      height: 300,
    },
    //Input_______________________________
    input: {
@@ -272,7 +300,19 @@ const styles = StyleSheet.create({
       color: '#313131',
       paddingLeft: 5,
    },
-   
+   infoObjectName: {
+      fontSize: 35,
+      color: '#595959',
+      paddingHorizontal: 20,
+      paddingVertical: 30,
+   },
+
+   generalInfoObject: {
+      fontSize: 20,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      color: '#595959',
+   },
  
  });
 

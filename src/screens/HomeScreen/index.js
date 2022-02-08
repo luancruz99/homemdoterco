@@ -3,12 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { useStateValue } from '../../contexts/StateContext';
 import LinearGradient from 'react-native-linear-gradient';
 import {
-ScrollView,
-SafeAreaView,
-View,
-Text,
-Image,
-TouchableOpacity,
+   ScrollView,
+   SafeAreaView,
+   View,
+   Text,
+   Image,
+   TouchableOpacity,
 
 }
    from 'react-native'
@@ -22,7 +22,7 @@ export default () => {
    const navigation = useNavigation();
    const [context, dispatch] = useStateValue();
 
-   
+
 
    const redirectConsultaParoquia = () => { };
 
@@ -44,16 +44,16 @@ export default () => {
       <SafeAreaView style={styles.container}>
          <Background />
 
-         <ScrollView >
+         <ScrollView>
             <View style={styles.headerArea}>
                <View style={styles.welcomeArea}>
-                  <Text style={styles.welcomeText}>Olá {context.userData.user.name}!</Text>
+                  <Text style={styles.welcomeText}>Olá {context.data.user.name}!</Text>
                </View>
 
                <Image style={styles.smallLogo} source={require('../../assets/logo_diocese.png')} />
             </View>
 
-         
+
             <View style={styles.menuArea}>
                <View style={styles.menuSubArea}>
 
@@ -61,7 +61,7 @@ export default () => {
                      colors={['#f1da9a', '#b69b4f']}
                      style={styles.iconsBorder}
                   >
-                     <TouchableOpacity activeOpacity={0.75} style={styles.menuIcons} onPress={()=>{navigation.navigate('DioceseTab');}}>
+                     <TouchableOpacity activeOpacity={0.75} style={styles.menuIcons} onPress={() => { navigation.navigate('DioceseTab'); }}>
                         <Image style={styles.iconLogo} source={require('../../assets/diocese.png')} />
                         <Text style={styles.iconText}>Diocese</Text>
                      </TouchableOpacity>
