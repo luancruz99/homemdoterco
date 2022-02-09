@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
    container2: {
       flex: 1,
    },
-   
+
    copyArea: {
       flex: 1,
       flexDirection: "column-reverse",
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
       marginTop: 20,
       marginBottom: 20,
    },
-   
+
    headerArea: {
       flexDirection: "row",
       height: 190,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 20,
       marginTop: 10,
    },
-   
+
 
    registerArea: {
       flex: 1,
@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       marginTop: 20,
       marginBottom: 10,
- 
+
    },
-   
+
    RegisterArea: {
       flexDirection: 'row',
       justifyContent: "center",
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
       borderWidth: 0.55,
    },
 
-   
+
    resultTextArea: {
       height: '100%',
       flex: 1,
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       borderLeftColor: '#0000002f',
    },
-   
-   
+
+
    resultSeparator: {
       width: '80%',
       borderTopWidth: 0.55,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
    infoArea: {
       width: '95%',
       height: '100%',
-      backgroundColor: '#f5f5f5',
+      backgroundColor: '#f9f9f9',
       alignSelf: 'center',
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
@@ -163,14 +163,14 @@ const styles = StyleSheet.create({
       top: 200,
       borderWidth: 1,
       borderColor: '#00000008',
-      
+
    },
 
    infoObjectArea: {
       height: 150,
       width: '100%',
    },
-   
+
    //Image_______________________________
    largeLogo: {
       width: 250,
@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: 60,
-      marginBottom: 40,
-     
+      marginBottom: 80,
+
    },
 
    smallLogo: {
@@ -188,28 +188,28 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       left: '15%',
    },
-   
+
    iconLogo: {
       margin: 12,
       width: 102,
       height: 102,
    },
-   
+
    imagePicker: {
       height: 150,
       width: 150,
       borderRadius: 75,
       alignSelf: 'center',
    },
-   
-   resultImage:{
+
+   resultImage: {
       width: '100%',
       height: '100%',
       borderRadius: 75,
    },
 
    infoImage: {
-      width: '100%', 
+      width: '100%',
       height: 300,
    },
    //Input_______________________________
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
       width: '42%',
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
-      marginLeft:10,
+      marginLeft: 10,
       marginRight: 10,
    },
 
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
       marginLeft: 10,
    },
 
-   
+
    //Text________________________________
    copyright: {
       color: '#888',
@@ -279,17 +279,17 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#000',
       fontSize: 15,
-      
-      
+
+
    },
 
    imagePickerText: {
       fontSize: 12,
       color: '#fff',
-      
+
    },
-   
-   restultText:{
+
+   restultText: {
       fontSize: 20,
       color: '#313131',
       paddingLeft: 5,
@@ -313,7 +313,16 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
       color: '#595959',
    },
- 
- });
 
- export {styles};
+   //ActivityIndicator___________________
+   loadingIndicator: {
+      position: 'absolute',
+      alignSelf: 'center',
+      marginTop: 135,
+      backgroundColor: '#fff',
+      borderRadius: 50,
+      padding: 2,
+   },
+});
+
+export { styles };

@@ -20,47 +20,48 @@ import AbreviateStates from '../../components/AbbreviateStates'
 import Background from '../../components/background';
 
 
-  export default () => {
+export default () => {
    const navigation = useNavigation();
    const [context, dispatch] = useStateValue();
    const [list, setList] = useState();
    const [searchText, setSearchText] = useState('');
 
    const selectDiocese = (item) => {
-      dispatch({type: 'setObject', payload: {object: item}});
+      dispatch({ type: 'setDiocese', payload: { diocese: item } });
       navigation.navigate('InfoScreenTab');
    };
 
 
    useEffect(() => {
-      let state = [];
-      let orderState;
 
       database()
          .ref('/bd/diocese')
          .on('value', (snapshot) => {
+            let object = [];
             snapshot.forEach((childItem) => {
-               state.push(childItem.val());
-               orderState = state;
+               object.push(childItem.val());
+
             });
 
-            state.length > 1 ? orderState.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0) : '';
-
-
-
-            setList(
-               orderState.filter(item => {
-                  if (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
-                     return true;
-                  } else if (item.cidade.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
-                     return true;
-                  } else {
-                     return false;
-                  }
-               })
-            );
+            if (object) {
+               object.length > 1 ? object.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0) : '';
+               setList(
+                  object.filter(item => {
+                     if (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                        return true;
+                     } else if (item.cidade.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  })
+               );
+            }
 
          });
+
+         
+
 
    }, [searchText]);
 
@@ -93,7 +94,7 @@ import Background from '../../components/background';
                renderItem={({ item }) => {
                   return (
                      <View>
-                        <TouchableOpacity onPress={()=>selectDiocese(item)} style={styles.searchResultArea}>
+                        <TouchableOpacity onPress={() => selectDiocese(item)} style={styles.searchResultArea}>
                            <View style={styles.resultImageArea}><Image style={styles.resultImage} source={{ uri: item.imageUrl }} /></View>
 
                            <View style={styles.resultTextArea}>

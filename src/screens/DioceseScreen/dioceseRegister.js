@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
+import { launchImageLibrary } from 'react-native-image-picker';
+import uuid from 'react-native-uuid';
+
 import {
    ScrollView,
    SafeAreaView,
@@ -10,22 +13,20 @@ import {
    Image,
    TouchableOpacity,
    TextInput,
+   ActivityIndicator
 
-}
-   from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
+} from 'react-native';
 import SimpleToast from 'react-native-simple-toast';
-import uuid from 'react-native-uuid';
-
 import Background from '../../components/background';
 import { styles } from '../../styles';
-import { BorderlessButton } from 'react-native-gesture-handler';
 
 
 
 export default () => {
    const navigation = useNavigation();
+
    const [avatar, setAvatar] = useState('');
+
    const [name, setName] = useState('');
    const [cep, setCep] = useState('');
    const [estado, setEstado] = useState('');
@@ -33,13 +34,69 @@ export default () => {
    const [bairro, setBairro] = useState('');
    const [endereco, setEndereco] = useState('');
    const [numero, setNumero] = useState('');
+   const [loading, setLoading] = useState(false);
 
-   function getPhoto() {
-      launchImageLibrary({ mediaType: 'photo', maxWidth: 1280 }, (data) => {
+   const handleRegisterButton = async () => {
+
+      if (loading) {
+         SimpleToast.show('O cadastro já está sendo processado!');
+         return;
+      }
+
+      if (!avatar) {
+         SimpleToast.show('Defina uma foto!');
+         return;
+      }
+
+      if (name == '' || cep == '' || estado == '' || cidade == '' || bairro == '' || endereco == '' || numero == '') {
+         SimpleToast.show('Preencha todos os campos!');
+         return;
+      }
+
+      setLoading(true);
+
+      let token = uuid.v4();
+      let databaseRef = database().ref(`/bd/diocese/${token}`);
+      let storageRef = storage().ref(`images/diocese/${token}`);
+
+      await storageRef.putFile(avatar.uri);
+      let imageUrl = await storageRef.getDownloadURL();
+      let type = 'diocese';
+
+      await databaseRef.set({
+         token,
+         name,
+         cep,
+         estado,
+         cidade,
+         bairro,
+         endereco,
+         numero,
+         type,
+         imageUrl,
+      });
+
+      setLoading(false);
+
+      SimpleToast.show('Cadastro concluído!');
+      resetField();
+      navigation.navigate('DioceseTabSearch');
+
+
+   };
+
+   const getPhoto = () => {
+      let options = {
+         mediaType: 'photo',
+         maxWidth: 1280,
+         maxHeight: 1280,
+      };
+
+      launchImageLibrary(options, (data) => {
          if (data.didCancel) {
             return;
          }
-         if (data.error) {
+         if (data.errorCode) {
             return;
          }
          if (!data.assets[0].uri) {
@@ -49,63 +106,26 @@ export default () => {
          setAvatar(data.assets[0]);
 
       })
+
    };
 
-
-
-   async function handleRegisterButton() {
-
-      if (name == '' || cep == '' || estado == '' || cidade == '' || bairro == '' || endereco == '' || numero == '') {
-         SimpleToast.show('Preencha todos os campos!');
-         return false;
-      } else {
-         if (!avatar) {
-            SimpleToast.show('Defina uma foto!');
-            return false;
-         }
-         let type = 'diocese';
-         let usuarios = database().ref('/bd/diocese');
-         let token = uuid.v4();
-
-         let uri = avatar.uri.replace('file://', '');
-         let image = storage().ref('images/diocese').child(token);
-         await image.putFile(uri);
-
-         let imageUrl = await image.getDownloadURL();
-
-         usuarios.child(token).set({
-
-            token,
-            name,
-            cep,
-            estado,
-            cidade,
-            bairro,
-            endereco,
-            numero,
-            type,
-            imageUrl,
-         });
-         SimpleToast.show('Cadastro concluído!');
-
-         
-
-         navigation.navigate('DioceseTabSearch');
-      }
-         setAvatar('');
-         setName('');
-         setCep('');
-         setEstado('');
-         setCidade('');
-         setBairro('');
-         setEndereco('');
-         setNumero('');
+   const resetField = () => {
+      setAvatar('');
+      setName('');
+      setCep('');
+      setEstado('');
+      setCidade('');
+      setBairro('');
+      setEndereco('');
+      setNumero('');
    };
+
 
    return (
       <SafeAreaView style={styles.container}>
          <Background />
 
+         {loading ? <ActivityIndicator style={styles.loadingIndicator} color="#dabe7b" size="large" /> : null}
 
          <View style={styles.headerArea}>
             <View style={styles.welcomeArea}>
@@ -123,10 +143,10 @@ export default () => {
             </TouchableOpacity>
 
 
-            <TextInput style={styles.nameRegister} value={name} placeholder='Nome' onChangeText={(t) => setName(t)} />
+            <TextInput style={styles.nameRegister} value={name} autoCapitalize='words' placeholder='Nome' onChangeText={(t) => setName(t)} />
 
             <View style={styles.RegisterArea}>
-               <TextInput style={styles.halfRegister} value={cep} keyboardType='number-pad' placeholder='CEP' onChangeText={(t) => setCep(t)} />
+               <TextInput style={styles.halfRegister} value={cep} maxLength={8} keyboardType='number-pad' placeholder='CEP' onChangeText={(t) => setCep(t)} />
                <TextInput style={styles.halfRegister} value={estado} placeholder='Estado' onChangeText={(t) => setEstado(t)} />
             </View>
             <View style={styles.RegisterArea}>

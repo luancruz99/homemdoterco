@@ -20,7 +20,7 @@ export default function Login() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
-   const ref_input2 = useRef();
+   const ref_passwordInput = useRef();
 
    
 
@@ -77,8 +77,9 @@ export default function Login() {
             <TextInput
                placeholder='Digite seu email'
                style={styles.input}
+               autoCapitalize='none'
                returnKeyType={'next'}
-               onSubmitEditing={() => ref_input2.current.focus()}
+               onSubmitEditing={() => ref_passwordInput.current.focus()}
                blurOnSubmit={false}
                keyboardType='email-address'
                onChangeText={(text) => setEmail(text)}
@@ -88,7 +89,7 @@ export default function Login() {
             <TextInput
                placeholder='Senha'
                style={styles.input}
-               ref={ref_input2}
+               ref={ref_passwordInput}
                secureTextEntry={true}
                onChangeText={(text) => setPassword(text)}
                value={password}

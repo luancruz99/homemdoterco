@@ -22,7 +22,7 @@ export default () => {
       >
          <Tab.Screen name='ObjectInfo' component={ObjectInfo} options={{tabBarLabel: 'Informações'}}/>
          <Tab.Screen name='ObjectUser' component={ObjectUser} options={{tabBarLabel: 'Usuários'}}/>
-         <Tab.Screen name='HomeScreen' component={HomeScreen} options={{tabBarLabel: 'Home'}}/>
+         <Tab.Screen name='HomeScreen' component={HomeScreen} options={{tabBarLabel: 'Início'}}/>
          <Tab.Screen name='ObjectEvent' component={ObjectEvent} options={{tabBarLabel: 'Eventos'}}/>
          <Tab.Screen name='ObjectChild' component={ObjectChild} options={{tabBarLabel: 'Paróquias'}}/>
       </Tab.Navigator>

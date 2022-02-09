@@ -23,7 +23,7 @@ export default () => {
 
       >
          <Tab.Screen name='DioceseTabSearch' component={dioceseSearch} options={{tabBarLabel: 'Consulta'}}/>
-         <Tab.Screen name='HomeScreen' component={HomeScreen} options={{tabBarLabel: 'Home'}}/>
+         <Tab.Screen name='HomeScreen' component={HomeScreen} options={{tabBarLabel: 'Início'}}/>
          <Tab.Screen name='DioceseTabRegister' component={dioceseRegister} options={{tabBarLabel: 'Cadastro'}}/>
       </Tab.Navigator>
    );

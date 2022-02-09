@@ -2,13 +2,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 const initialState = {
-   object: {}
+   diocese: {}
 }
 
 export default (state = initialState, action = {}) => {
    switch (action.type) {
-      case 'setObject':
-         return { ...state, object: action.payload.object };
+      case 'setDiocese':
+         return { ...state, diocese: action.payload.diocese };
          break;
    }
 

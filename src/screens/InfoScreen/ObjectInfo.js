@@ -14,15 +14,15 @@ export default InfoScreen = () => {
       <SafeAreaView style={styles.container}>
          <Background />
          <View style={styles.container2}>
-            <Image style={styles.infoImage} source={{ uri: context.objectData.object.imageUrl }} />
+            <Image style={styles.infoImage} source={{ uri: context.objectData.diocese.imageUrl }} />
       
             <ScrollView style={styles.infoArea}>
                <View style={styles.infoObjectArea}>
-                  <Text style={styles.infoObjectName}>{context.objectData.object.name}</Text>
+                  <Text style={styles.infoObjectName}>{context.objectData.diocese.name}</Text>
                </View>
-               <Text style={styles.generalInfoObject}>{context.objectData.object.endereco}, {context.objectData.object.numero}</Text>
-               <Text style={styles.generalInfoObject}>{context.objectData.object.bairro} - {context.objectData.object.cep}</Text>
-               <Text style={styles.generalInfoObject}>{context.objectData.object.cidade} - {context.objectData.object.estado}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.diocese.endereco}, {context.objectData.diocese.numero}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.diocese.bairro} - {context.objectData.diocese.cep}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.diocese.cidade} - {context.objectData.diocese.estado}</Text>
                <Text style={[styles.generalInfoObject, {marginTop:20}]}>Total de membros:  2437</Text>
 
             </ScrollView>

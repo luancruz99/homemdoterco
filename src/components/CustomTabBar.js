@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import api from "../services/api";
+import { useStateValue } from '../contexts/StateContext';
+
 import {
    View,
    StyleSheet,
@@ -9,9 +10,10 @@ import {
    Keyboard
 }
 from 'react-native'
-import { color } from "react-native-reanimated";
-import FontAwesome from 'react-native-vector-icons/Ionicons';
-import { useStateValue } from '../contexts/StateContext';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCalendarAlt, faPlusSquare, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faHouse, faMagnifyingGlass, faCircleInfo, faChurch } from '@fortawesome/free-solid-svg-icons';
 
 
 export default CustomTabBar = ({ state, descriptors, navigation }) => {
@@ -61,25 +63,25 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
 
             switch (route.name) {
                case 'DioceseTabRegister':
-                  iconName = 'add-circle-outline';
+                  iconName = faPlusSquare;
                   break;
                case 'HomeScreen':
-                  iconName = 'ios-home';
+                  iconName = faHouse;
                   break;
                case 'DioceseTabSearch':
-                  iconName = 'ios-search';
+                  iconName = faMagnifyingGlass;
                   break;
                case 'ObjectInfo':
-                  iconName = 'ios-information-circle-outline';
+                  iconName = faCircleInfo;
                   break;
                case 'ObjectUser':
-                  iconName = 'person-circle-outline';
+                  iconName = faUser;
                   break;
                case 'ObjectEvent':
-                  iconName = 'calendar-outline';
+                  iconName = faCalendarAlt;
                   break;
                case 'ObjectChild':
-                  iconName = 'heart-outline';
+                  iconName = faChurch;
                   break;
             }
 
@@ -93,7 +95,7 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
                   return (
 
                      <TouchableOpacity key={index} activeOpacity={1} underlayColor='transparent' style={styles.homeTab} onPress={handleTabPress}>
-                        <FontAwesome name={iconName} size={45} color={'#fff'} />
+                        <FontAwesomeIcon icon={iconName} size={45} color={'#fff'} />
 
                         <Text style={[styles.homeLabel]}>{label}</Text>
                      </TouchableOpacity>
@@ -101,7 +103,7 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
                } else {
                   return (
                      <TouchableOpacity key={index} activeOpacity={1} underlayColor='transparent' style={styles.tab} onPress={handleTabPress}>
-                        <FontAwesome name={iconName} size={isFocused ? 50 : 45} color={isFocused ? '#000' : '#ccc'} />
+                        <FontAwesomeIcon icon={iconName} size={isFocused ? 43 : 38} color={isFocused ? '#000' : '#ccc'} />
 
                         <Text style={[styles.label, isFocused ? styles.labelFocused : null]}>{label}</Text>
                      </TouchableOpacity>
