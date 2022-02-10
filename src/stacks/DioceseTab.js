@@ -20,7 +20,7 @@ export default () => {
       screenOptions={{headerShown: false}}
       tabBar={(props) => <CustomTabBar {...props}/>}
       initialRouteName='DioceseTabSearch'
-
+      backBehavior='none'
       >
          <Tab.Screen name='DioceseTabSearch' component={dioceseSearch} options={{tabBarLabel: 'Consulta'}}/>
          <Tab.Screen name='HomeScreen' component={HomeScreen} options={{tabBarLabel: 'Início'}}/>

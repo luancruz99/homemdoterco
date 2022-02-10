@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import database from '@react-native-firebase/database';
-import { useStateValue } from '../../contexts/StateContext';
+import { useStateValue } from '../../../contexts/StateContext';
 
 import { Text, Image, View, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 
-import Background from '../../components/background';
-import { styles } from '../../styles';
+import Background from '../../../components/background';
+import { styles } from '../../../styles';
 
 export default InfoScreen = () => {
    const [context, dispatch] = useStateValue();

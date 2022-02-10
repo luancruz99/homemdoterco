@@ -38,11 +38,13 @@ export default function Login() {
                   SimpleToast.show('Email inválido!');
                   return false;
                }
-               let userData = Object.values(snapshot.val())[0];
-               if (userData?.password != password) {
+               if (Object.values(snapshot.val())[0].password != password) {
                   SimpleToast.show('Senha incorreta!');
                   return false;
                }
+
+               let userData = Object.values(snapshot.val())[0];
+               
                
                dispatch({ type: 'setToken', payload: { token: userData.token } });
                dispatch({ type: 'setUser', payload: { user: userData } });

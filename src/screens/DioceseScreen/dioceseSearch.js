@@ -11,9 +11,7 @@ import {
    TouchableOpacity,
    TextInput,
    FlatList
-}
-   from 'react-native'
-import LinearGradient from 'react-native-linear-gradient';
+} from 'react-native';
 import { styles } from '../../styles';
 
 import AbreviateStates from '../../components/AbbreviateStates'
@@ -23,12 +21,12 @@ import Background from '../../components/background';
 export default () => {
    const navigation = useNavigation();
    const [context, dispatch] = useStateValue();
-   const [list, setList] = useState();
+   const [list, setList] = useState([]);
    const [searchText, setSearchText] = useState('');
 
    const selectDiocese = (item) => {
       dispatch({ type: 'setDiocese', payload: { diocese: item } });
-      navigation.navigate('InfoScreenTab');
+      navigation.navigate('DioceseInfoScreenTab');
    };
 
 

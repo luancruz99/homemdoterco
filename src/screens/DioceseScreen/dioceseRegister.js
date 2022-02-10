@@ -39,7 +39,7 @@ export default () => {
    const handleRegisterButton = async () => {
 
       if (loading) {
-         SimpleToast.show('O cadastro já está sendo processado!');
+         SimpleToast.show('Processando o cadastro!');
          return;
       }
 

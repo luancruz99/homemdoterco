@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 
    headerArea: {
       flexDirection: "row",
-      height: 190,
+      height: 200,
    },
 
    welcomeArea: {
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
    menuArea: {
       flex: 1,
-      width: '92%',
+      width: '95%',
       height: '100%',
       alignSelf: 'center',
       backgroundColor: '#fff',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 
    searchArea: {
       flex: 1,
-      width: '92%',
+      width: '95%',
       alignSelf: 'center',
       backgroundColor: '#fff',
       borderTopLeftRadius: 20,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
 
    registerArea: {
       flex: 1,
-      width: '92%',
+      width: '95%',
       backgroundColor: '#fff',
       borderTopLeftRadius: 40,
       borderTopRightRadius: 40,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
    infoArea: {
       width: '95%',
       height: '100%',
-      backgroundColor: '#f9f9f9',
+      backgroundColor: '#fff',
       alignSelf: 'center',
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
@@ -169,6 +169,11 @@ const styles = StyleSheet.create({
    infoObjectArea: {
       height: 150,
       width: '100%',
+   },
+
+   headerUserArea: {
+      flexDirection: 'row-reverse',
+      height: 200,
    },
 
    //Image_______________________________
@@ -212,10 +217,18 @@ const styles = StyleSheet.create({
       width: '100%',
       height: 300,
    },
+
+   ObjectsmallLogo: {
+      width: 150,
+      height: 150,
+      alignSelf: 'center',
+      left: '15%',
+      borderRadius: 75,
+   },
    //Input_______________________________
    input: {
       height: 45,
-      width: '92%',
+      width: '95%',
       backgroundColor: '#FFF',
       textAlign: 'center',
       borderRadius: 40,
