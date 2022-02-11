@@ -47,11 +47,13 @@ const styles = StyleSheet.create({
 
    menuArea: {
       flex: 1,
-      width: '95%',
+      width: '92%',
       height: '100%',
       alignSelf: 'center',
       backgroundColor: '#fff',
       borderRadius: 10,
+      padding: 10
+      
    },
 
    menuSubArea: {
@@ -132,7 +134,6 @@ const styles = StyleSheet.create({
       marginRight: 10,
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 0.55,
    },
 
 
@@ -172,9 +173,38 @@ const styles = StyleSheet.create({
    },
 
    headerUserArea: {
-      flexDirection: 'row-reverse',
       height: 200,
+      flexDirection: 'row',
+      alignItems: 'center',
    },
+
+   absoluteView: {
+      position: 'absolute',
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%'
+   },
+
+   registerButton: { 
+      position: 'absolute', 
+      width: 50, 
+      height: 50, 
+      borderRadius: 25, 
+      bottom: 25, 
+      right: 35, 
+      backgroundColor: '#dabe7b', 
+      alignItems: 'center', 
+      justifyContent: 'center' 
+   },
+
+   editButton: {
+      position: 'absolute', 
+      heigh: 20, 
+      width: 20, 
+      right:20, 
+      top:20},
 
    //Image_______________________________
    largeLogo: {
@@ -218,12 +248,12 @@ const styles = StyleSheet.create({
       height: 300,
    },
 
-   ObjectsmallLogo: {
-      width: 150,
-      height: 150,
-      alignSelf: 'center',
-      left: '15%',
-      borderRadius: 75,
+   objectSmallLogo: {
+      width: 120,
+      height: 120,
+      borderRadius: 60,
+      marginLeft: 10,
+      marginRight: 10,
    },
    //Input_______________________________
    input: {
@@ -243,6 +273,8 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       marginLeft: 10,
       marginRight: 10,
+      fontSize: 15,
+      justifyContent: 'center',
    },
 
    nameRegister: {
@@ -250,6 +282,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       alignSelf: 'center',
+      fontSize: 15,
    },
 
    adressRegister: {
@@ -257,6 +290,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginRight: 10,
+      fontSize: 15,
    },
 
    numberRegister: {
@@ -264,6 +298,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginLeft: 10,
+      fontSize: 15,
    },
 
 
@@ -327,6 +362,13 @@ const styles = StyleSheet.create({
       color: '#595959',
    },
 
+   pickerText: {
+      position: 'absolute',
+      marginLeft: 4,
+      fontSize: 15,
+      color: '#999',
+   },
+
    //ActivityIndicator___________________
    loadingIndicator: {
       position: 'absolute',
@@ -335,6 +377,19 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       borderRadius: 50,
       padding: 2,
+   },
+
+   //Picker______________________________
+   picker: {
+      marginLeft: -12,
+      fontSize: 15,
+      marginBottom: -3,
+   },
+   //LinearGradient______________________
+   absoluteLinearGradient: { 
+      position: 'absolute', 
+      height: 300, 
+      width: '100%' 
    },
 });
 

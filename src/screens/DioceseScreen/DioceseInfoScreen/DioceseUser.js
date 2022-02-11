@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { useStateValue } from '../../../contexts/StateContext';
 import database from '@react-native-firebase/database';
-import { 
-  View, 
-  Text, 
-  Image, 
-  FlatList, 
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
   TouchableOpacity,
   TextInput,
   SafeAreaView
@@ -18,9 +19,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default () => {
+  const navigation = useNavigation();
   const [context, dispatch] = useStateValue();
   const [list, setList] = useState();
   const [searchText, setSearchText] = useState('');
+
+  let getFirstName = context.objectData.diocese.name.split(' ', 2);
+  let firstName = `${getFirstName[0]} ${getFirstName[1]}`;
+  let lastName = context.objectData.diocese.name.substring(firstName.length + 1);
+
+  const handleRegisterButton = () => {
+    navigation.navigate('DioceseUserRegister');
+  };
 
   useEffect(() => {
 
@@ -58,12 +68,17 @@ export default () => {
 
 
       <View style={styles.headerUserArea}>
-        <Image style={styles.ObjectsmallLogo} source={{ uri: context.objectData.diocese.imageUrl }} />
+        <Image style={styles.objectSmallLogo} source={{ uri: context.objectData.diocese.imageUrl }} />
+        <View style={{height: 200,  justifyContent: 'center'}}>
+          <Text style={{fontSize: 40, fontWeight: 'bold'}} >{getFirstName[0]}</Text>
+          <Text style={{fontSize: 40, top: -10, fontWeight: 'bold'}} >{getFirstName[1]}</Text>
+          <Text style={{fontSize: 20, top: -5}} >{lastName}</Text>
+        </View>
       </View>
 
       <TextInput
         style={styles.input}
-        placeholder='digite um nome'
+        placeholder='Digite um nome'
         value={searchText}
         onChangeText={(t) => { setSearchText(t) }}
       />
@@ -85,8 +100,9 @@ export default () => {
         />
 
       </View>
-      <View style={{ position: 'absolute', flex: 1, alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', padding: 10 }}>
-        <TouchableOpacity style={{ position: 'absolute', width: 50, height: 50, borderRadius: 25, bottom: 30, right: 40, backgroundColor: '#dabe7b', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.absoluteView}>
+
+        <TouchableOpacity style={styles.registerButton} onPress={handleRegisterButton}>
           <FontAwesomeIcon color='#fff' icon={faPlus} size={35} />
         </TouchableOpacity>
       </View>

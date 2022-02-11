@@ -4,6 +4,7 @@ import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { launchImageLibrary } from 'react-native-image-picker';
 import uuid from 'react-native-uuid';
+import * as yup from 'yup';
 
 import {
    ScrollView,
@@ -13,18 +14,18 @@ import {
    Image,
    TouchableOpacity,
    TextInput,
-   ActivityIndicator
-
+   ActivityIndicator,
 } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import SimpleToast from 'react-native-simple-toast';
 import Background from '../../components/background';
 import { styles } from '../../styles';
+import states from '../../components/States'
 
 
 
 export default () => {
    const navigation = useNavigation();
-
    const [avatar, setAvatar] = useState('');
 
    const [name, setName] = useState('');
@@ -43,11 +44,6 @@ export default () => {
          return;
       }
 
-      if (!avatar) {
-         SimpleToast.show('Defina uma foto!');
-         return;
-      }
-
       if (name == '' || cep == '' || estado == '' || cidade == '' || bairro == '' || endereco == '' || numero == '') {
          SimpleToast.show('Preencha todos os campos!');
          return;
@@ -56,12 +52,18 @@ export default () => {
       setLoading(true);
 
       let token = uuid.v4();
-      let databaseRef = database().ref(`/bd/diocese/${token}`);
-      let storageRef = storage().ref(`images/diocese/${token}`);
-
-      await storageRef.putFile(avatar.uri);
-      let imageUrl = await storageRef.getDownloadURL();
+      let imageUrl = 'https://leituria.com/Content/Images/img-default.png'
       let type = 'diocese';
+
+      let databaseRef = database().ref(`/bd/diocese/${token}`);
+      
+
+      if (avatar) {
+         let storageRef = storage().ref(`images/diocese/${token}`);
+         await storageRef.putFile(avatar.uri);
+         imageUrl = await storageRef.getDownloadURL();
+         
+      }
 
       await databaseRef.set({
          token,
@@ -90,6 +92,7 @@ export default () => {
          mediaType: 'photo',
          maxWidth: 1280,
          maxHeight: 1280,
+         
       };
 
       launchImageLibrary(options, (data) => {
@@ -125,7 +128,7 @@ export default () => {
       <SafeAreaView style={styles.container}>
          <Background />
 
-         {loading ? <ActivityIndicator style={styles.loadingIndicator} color="#dabe7b" size="large" /> : null}
+         {loading && <ActivityIndicator style={styles.loadingIndicator} color="#dabe7b" size="large" />}
 
          <View style={styles.headerArea}>
             <View style={styles.welcomeArea}>
@@ -147,7 +150,20 @@ export default () => {
 
             <View style={styles.RegisterArea}>
                <TextInput style={styles.halfRegister} value={cep} maxLength={8} keyboardType='number-pad' placeholder='CEP' onChangeText={(t) => setCep(t)} />
-               <TextInput style={styles.halfRegister} value={estado} placeholder='Estado' onChangeText={(t) => setEstado(t)} />
+               <View style={styles.halfRegister}>
+                  <Picker
+                     style={styles.picker}
+                     selectedValue={estado}
+                     onValueChange={(t) => setEstado(t)}
+                  >
+                     {
+                        states.map((item, index) => {
+                           return <Picker.Item value={item} label={item} key={index} color={item == ' ' ? '#fff' : '#000'} enabled={item == ' ' ? false : true} />
+                        })
+                     }
+                  </Picker>
+                  {estado == '' && <Text style={styles.pickerText}>Estado</Text>}
+               </View>
             </View>
             <View style={styles.RegisterArea}>
                <TextInput style={styles.halfRegister} value={cidade} placeholder='Cidade' onChangeText={(t) => setCidade(t)} />
@@ -163,6 +179,6 @@ export default () => {
             </TouchableOpacity>
          </ScrollView>
 
-      </SafeAreaView>
+      </SafeAreaView >
    );
 };
