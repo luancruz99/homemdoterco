@@ -1,5 +1,4 @@
 export default states = [
-      ' ',
       'Acre',
       'Alagoas',
       'Amapá',

@@ -1,5 +1,6 @@
 import { normalizeUnits } from "moment";
 import { StyleSheet } from "react-native";
+import { color } from "react-native-reanimated";
 
 const styles = StyleSheet.create({
    //View______________________________
@@ -107,11 +108,11 @@ const styles = StyleSheet.create({
       borderRadius: 75,
       alignSelf: 'center',
       marginTop: 20,
-      marginBottom: 10,
+      marginBottom: 5,
 
    },
 
-   RegisterArea: {
+   registerSubArea: {
       flexDirection: 'row',
       justifyContent: "center",
       width: '100%'
@@ -200,11 +201,20 @@ const styles = StyleSheet.create({
    },
 
    editButton: {
-      position: 'absolute', 
-      heigh: 20, 
-      width: 20, 
+      position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 25,
+      maxheigh: 25, 
+      minheigh: 25, 
+      width: 25, 
+      maxwidth: 25, 
+      minwidth: 25, 
       right:20, 
-      top:20},
+      top:20,
+      borderRadius: 4,
+      backgroundColor: '#0000005f'
+   },
 
    //Image_______________________________
    largeLogo: {
@@ -264,6 +274,7 @@ const styles = StyleSheet.create({
       borderRadius: 40,
       marginBottom: 7,
       alignSelf: 'center',
+      alignItems: 'center',
       fontSize: 16,
    },
 
@@ -273,16 +284,16 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       marginLeft: 10,
       marginRight: 10,
-      fontSize: 15,
+      fontSize: 16,
       justifyContent: 'center',
    },
 
-   nameRegister: {
-      width: '90%',
+   fullRegister: {
+      width: '89%',
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       alignSelf: 'center',
-      fontSize: 15,
+      fontSize: 16,
    },
 
    adressRegister: {
@@ -290,7 +301,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginRight: 10,
-      fontSize: 15,
+      fontSize: 16,
    },
 
    numberRegister: {
@@ -298,7 +309,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginLeft: 10,
-      fontSize: 15,
+      fontSize: 16,
    },
 
 
@@ -362,13 +373,6 @@ const styles = StyleSheet.create({
       color: '#595959',
    },
 
-   pickerText: {
-      position: 'absolute',
-      marginLeft: 4,
-      fontSize: 15,
-      color: '#999',
-   },
-
    //ActivityIndicator___________________
    loadingIndicator: {
       position: 'absolute',
@@ -380,11 +384,12 @@ const styles = StyleSheet.create({
    },
 
    //Picker______________________________
+   
    picker: {
       marginLeft: -12,
-      fontSize: 15,
       marginBottom: -3,
    },
+
    //LinearGradient______________________
    absoluteLinearGradient: { 
       position: 'absolute', 
