@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
    },
 
    adressRegister: {
-      width: '64%',
+      width: '57%',
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginRight: 10,
@@ -305,13 +305,10 @@ const styles = StyleSheet.create({
    },
 
    numberRegister: {
-      width: '20%',
-      borderBottomColor: '#ccc',
-      borderBottomWidth: 1,
+      width: '68%',
       marginLeft: 10,
       fontSize: 16,
    },
-
 
    //Text________________________________
    copyright: {

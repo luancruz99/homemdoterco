@@ -12,6 +12,8 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 
@@ -39,11 +41,12 @@ export default () => {
    const [district, setDistrict] = useState('');
    const [adress, setAdress] = useState('');
    const [number, setNumber] = useState('');
+   const [select, setSelect] = useState(false);
    const [complement, setComplement] = useState('');
    const [biography, setBiography] = useState('');
 
    const [loading, setLoading] = useState(false);
-
+   
    const getPhoto = () => {
       let options = {
          mediaType: 'photo',
@@ -82,7 +85,7 @@ export default () => {
       setBiography('');
    };
 
-   const handleRegisterButton = async () => {
+   const handleRegisterButton = async () => {      
       if (loading) {
          SimpleToast.show('Processando o cadastro!');
          return;
@@ -258,13 +261,26 @@ export default () => {
                   value={adress}
                   onChangeText={(t) => setAdress(t)}
                />
-               <TextInput
-                  style={styles.numberRegister}
-                  keyboardType='number-pad'
-                  placeholder='Nº'
-                  value={number}
-                  onChangeText={(t) => setNumber(t)}
-               />
+                  
+               <View style={[{flexDirection: 'row', width: '30%', paddingRight: 20, borderBottomColor: '#ccc', borderBottomWidth: 1 }]} >
+                  <TextInput
+                     style={styles.numberRegister}
+                     keyboardType='number-pad'
+                     placeholder='Nº'
+                     value={number}
+                     onChangeText={(t) => setNumber(t)}
+                  />
+                  <BouncyCheckbox 
+                     isChecked={select}
+                     onPress={() => setSelect(!select)}
+                     size={20}
+                     fillColor="#79a5a8"
+                     unfillColor="#FFFFFF"
+                     text="S/N"
+                     iconStyle={{ borderColor: "#79a5a8", margin: -10}}
+                     textStyle={{ textDecorationLine: "none", fontSize: 13 }}
+        		      />
+               </View>
             </View>
 
             <TextInput
