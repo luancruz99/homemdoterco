@@ -39,6 +39,7 @@ export default () => {
    const [district, setDistrict] = useState('');
    const [adress, setAdress] = useState('');
    const [number, setNumber] = useState('');
+   const [select, setSelect] = useState(false);
    const [complement, setComplement] = useState('');
    const [biography, setBiography] = useState('');
 
@@ -93,7 +94,7 @@ export default () => {
       }
    };
 
-   const handleRegisterButton = async () => {
+   const handleRegisterButton = async () => {      
       if (loading) {
          SimpleToast.show('Processando o cadastro!');
          return;

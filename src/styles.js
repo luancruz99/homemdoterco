@@ -384,7 +384,6 @@ const styles = StyleSheet.create({
       fontSize: 16,
    },
 
-
    //Text________________________________
    copyright: {
       color: '#888',
