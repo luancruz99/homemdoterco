@@ -91,7 +91,7 @@ export default () => {
 				onChangeText={(t) => { setSearchText(t) }}
 			/>
 
-			<View style={styles.searchAreaEvent}>
+			<View style={styles.searchArea}>
 				<FlatList
 					data={list}
 					renderItem={({ item }) => {

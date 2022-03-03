@@ -262,12 +262,13 @@ const styles = StyleSheet.create({
    },
 
    searchResultAreaEvent: {
-      width: '100%',
+      width: '95%',
       marginTop: 10,
       marginBottom:5,
       borderWidth:0.55,
       borderRadius:20,
-      borderColor: '#0000005f'
+      borderColor: '#0000005f',
+      alignSelf: 'center',
    },
 
    resultImageAreaEvent:{
