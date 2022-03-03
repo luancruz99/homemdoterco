@@ -30,6 +30,19 @@ const styles = StyleSheet.create({
       marginBottom: 20,
    },
 
+   registerButtonArea: {
+      backgroundColor: '#79a5a8',
+      padding: 12,
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
+      borderRadius: 40,
+      height: 45,
+      width: 100,
+      marginTop: 20,
+      marginBottom: 20,
+   },
+
    headerArea: {
       flexDirection: "row",
       height: 200,
@@ -97,8 +110,8 @@ const styles = StyleSheet.create({
       flex: 1,
       width: '95%',
       backgroundColor: '#fff',
-      borderTopLeftRadius: 40,
-      borderTopRightRadius: 40,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
       alignSelf: 'center',
    },
 
@@ -216,6 +229,59 @@ const styles = StyleSheet.create({
       backgroundColor: '#0000005f'
    },
 
+   numberRegisterArea: {
+      width: '25%',
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
+      marginLeft: 10,
+      flexDirection:'row', 
+      alignItems: 'center'
+   },
+
+   registerAreaEvent: {
+      width: '95%',
+      backgroundColor: '#fff',
+      justifyContent:'center'   
+   },
+
+   registerSubAreaEvent: {
+      flexDirection: 'row',
+      justifyContent: "center",
+      width: '95%'
+   },
+
+   searchAreaEvent: {
+      flex: 1,
+      width: '95%',
+      alignSelf: 'center',
+      backgroundColor: '#fff',
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      paddingLeft:15,
+      paddingRight: 15
+   },
+
+   searchResultAreaEvent: {
+      width: '100%',
+      marginTop: 10,
+      marginBottom:5,
+      borderWidth:0.55,
+      borderRadius:20,
+      borderColor: '#0000005f'
+   },
+
+   resultImageAreaEvent:{
+      width: '100%',
+      height: 100,
+      borderTopLeftRadius: 15,
+      borderTopRightRadius:15,
+   },
+
+   resultTextAreaEvent: {
+      height: 60,
+      widht: '100%'
+   },
+
    //Image_______________________________
    largeLogo: {
       width: 250,
@@ -265,7 +331,16 @@ const styles = StyleSheet.create({
       marginLeft: 10,
       marginRight: 10,
    },
+
+   resultImageEvent: {
+      width: '100%',
+      height: 100,
+      borderTopLeftRadius: 15,
+      borderTopRightRadius:15,
+   },
+
    //Input_______________________________
+   
    input: {
       height: 45,
       width: '95%',
@@ -297,18 +372,15 @@ const styles = StyleSheet.create({
    },
 
    adressRegister: {
-      width: '64%',
+      width: '59%',
       borderBottomColor: '#ccc',
       borderBottomWidth: 1,
       marginRight: 10,
       fontSize: 16,
    },
 
-   numberRegister: {
-      width: '20%',
-      borderBottomColor: '#ccc',
-      borderBottomWidth: 1,
-      marginLeft: 10,
+   numberRegisterInput:{
+      width: '45%',
       fontSize: 16,
    },
 
@@ -338,8 +410,6 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#000',
       fontSize: 15,
-
-
    },
 
    imagePickerText: {
@@ -362,15 +432,31 @@ const styles = StyleSheet.create({
    infoObjectName: {
       fontSize: 35,
       color: '#595959',
-      paddingHorizontal: 20,
-      paddingVertical: 30,
+      marginHorizontal: 20,
+      marginVertical: 30,
    },
 
    generalInfoObject: {
       fontSize: 20,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
+      marginHorizontal: 20,
+      marginVertical: 5,
       color: '#595959',
+   },
+
+   noNumberText: {
+      fontSize: 14,
+   },
+
+   resultTextEvent: {
+      fontSize: 25,
+      color: '#000',
+      paddingHorizontal: 10,
+   },
+
+   resultSubTextEvent: {
+      fontSize: 15,
+      color: '#000',
+      paddingHorizontal: 10,
    },
 
    //ActivityIndicator___________________
@@ -394,7 +480,11 @@ const styles = StyleSheet.create({
    absoluteLinearGradient: { 
       position: 'absolute', 
       height: 300, 
-      width: '100%' 
+      width: '100%' ,
+   },
+   //BouncyCheckBox______________________
+   noNumberCheckBox: {
+      marginRight:'-14%',
    },
 });
 

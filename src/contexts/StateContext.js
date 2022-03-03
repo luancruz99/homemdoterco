@@ -4,12 +4,13 @@ import UserReducer from '../reducers/UserReducer';
 import ObjectReducer from '../reducers/ObjectReducer';
 
 const initialState = {
-   data: UserReducer(),
+   userData: UserReducer(),
+   objectData: ObjectReducer(),
 };
 
 const MainReducer = (state, action) => ({
-   data: UserReducer(state.data, action),
-   objectData: ObjectReducer(state.data, action),
+   userData: UserReducer(state.userData, action),
+   objectData: ObjectReducer(state.objectData, action),
 });
 
 export const StateContext = createContext(initialState);

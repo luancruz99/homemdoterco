@@ -11,14 +11,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 
-export default InfoScreen = () => {
+export default () => {
    const [context, dispatch] = useStateValue();
 
    return (
       <SafeAreaView style={styles.container}>
          <Background />
          <View style={styles.container2}>
-            <Image style={styles.infoImage} source={{ uri: context.objectData.diocese.imageUrl }} />
+            <Image style={styles.infoImage} source={{ uri: context.objectData.event.imageUrl }} />
             <LinearGradient start={{ x: 0.5, y: 0.5 }} style={styles.absoluteLinearGradient} colors={['#dabe7b00', '#e8d6ac']} />
             <TouchableOpacity style={styles.editButton}>
                <FontAwesomeIcon icon={faPenToSquare} size={20} color={'#fff'} />
@@ -28,12 +28,13 @@ export default InfoScreen = () => {
 
             <ScrollView style={styles.infoArea}>
                <View style={styles.infoObjectArea}>
-                  <Text style={styles.infoObjectName}>{context.objectData.diocese.name}</Text>
+                  <Text style={styles.infoObjectName}>{context.objectData.event.name}</Text>
                </View>
-               <Text style={styles.generalInfoObject}>{context.objectData.diocese.endereco}, {context.objectData.diocese.numero}</Text>
-               <Text style={styles.generalInfoObject}>{context.objectData.diocese.bairro} - {context.objectData.diocese.cep}</Text>
-               <Text style={styles.generalInfoObject}>{context.objectData.diocese.cidade} - {context.objectData.diocese.estado}</Text>
-               <Text style={[styles.generalInfoObject, { marginTop: 20 }]}>Total de membros:  2437</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.data}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.hour} </Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.local} </Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.city}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.state}</Text>
 
             </ScrollView>
          </View>

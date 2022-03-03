@@ -46,7 +46,6 @@ export default function Login() {
                let userData = Object.values(snapshot.val())[0];
                
                
-               dispatch({ type: 'setToken', payload: { token: userData.token } });
                dispatch({ type: 'setUser', payload: { user: userData } });
 
                SimpleToast.show('Login feito com sucesso!!');

@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useStateValue } from '../contexts/StateContext';
+import { useStateValue } from '../../contexts/StateContext';
 
 import {
    View,
    StyleSheet,
    Text,
-   Image,
    TouchableOpacity,
    Keyboard
-}
-from 'react-native'
+} from 'react-native'
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCalendarAlt, faPlusSquare, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faHouse, faMagnifyingGlass, faCircleInfo, faChurch } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faHouse, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 
-export default CustomTabBar = ({ state, descriptors, navigation }) => {
+export default DioceseCustomTab = ({ state, descriptors, navigation }) => {
    const [keyboardOpen, setKeyboardOpen] = useState(undefined);
    const [context, dispatch] = useStateValue();
 
@@ -71,23 +69,9 @@ export default CustomTabBar = ({ state, descriptors, navigation }) => {
                case 'DioceseTabSearch':
                   iconName = faMagnifyingGlass;
                   break;
-               case 'ObjectInfo':
-                  iconName = faCircleInfo;
-                  break;
-               case 'ObjectUser':
-                  iconName = faUser;
-                  break;
-               case 'ObjectEvent':
-                  iconName = faCalendarAlt;
-                  break;
-               case 'ObjectChild':
-                  iconName = faChurch;
-                  break;
             }
 
-            if (context.data.user.token != 'master' || keyboardOpen) {
-
-               
+            if (context.userData.user.token != 'master' || keyboardOpen) {
                return (null);
 
             } else {

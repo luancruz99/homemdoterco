@@ -34,6 +34,7 @@ export default () => {
 
    const handleExitButton = async () => {
       await api.logout();
+      dispatch({type: 'removeUser'})
       navigation.reset({
          index: 1,
          routes: [{ name: 'LoginScreen' }],
@@ -47,7 +48,7 @@ export default () => {
          <ScrollView>
             <View style={styles.headerArea}>
                <View style={styles.welcomeArea}>
-                  <Text style={styles.welcomeText}>Olá {context.data.user.name}!</Text>
+                  <Text style={styles.welcomeText}>Olá {context.userData.user.name}!</Text>
                </View>
 
                <Image style={styles.smallLogo} source={require('../../assets/logo_diocese.png')} />

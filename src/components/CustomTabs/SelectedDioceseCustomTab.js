@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useStateValue } from '../contexts/StateContext';
+import { useStateValue } from '../../contexts/StateContext';
 
 import {
    View,
@@ -16,7 +16,7 @@ import { faCalendarAlt, faPlusSquare, faUser } from '@fortawesome/free-regular-s
 import { faHouse, faMagnifyingGlass, faCircleInfo, faChurch } from '@fortawesome/free-solid-svg-icons';
 
 
-export default CustomTabBar = ({ state, descriptors, navigation }) => {
+export default SelectedDioceseCustomTab = ({ state, descriptors, navigation }) => {
    const [keyboardOpen, setKeyboardOpen] = useState(undefined);
    const [context, dispatch] = useStateValue();
 
