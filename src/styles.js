@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff'
    },
    container2: {
-      flex: 1,
+      height: '100%',
    },
 
    copyArea: {
@@ -457,6 +457,13 @@ const styles = StyleSheet.create({
       fontSize: 15,
       color: '#000',
       paddingHorizontal: 10,
+   },
+
+   datePickerText: {
+      fontSize: 16,
+      color: '#888',
+      paddingHorizontal: 5,
+      position:'absolute'
    },
 
    //ActivityIndicator___________________

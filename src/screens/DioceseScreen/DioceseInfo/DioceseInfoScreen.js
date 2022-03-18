@@ -33,6 +33,7 @@ export default InfoScreen = () => {
                <Text style={styles.generalInfoObject}>{context.objectData.diocese.adress}, {context.objectData.diocese.number}</Text>
                <Text style={styles.generalInfoObject}>{context.objectData.diocese.district} - {context.objectData.diocese.cep}</Text>
                <Text style={styles.generalInfoObject}>{context.objectData.diocese.city} - {context.objectData.diocese.state}</Text>
+               <Text style={[styles.generalInfoObject, { marginTop: 20, marginBottom:50 }]}>{context.objectData.diocese.biography}</Text>
                <Text style={[styles.generalInfoObject, { marginTop: 20 }]}>Total de membros:  2437</Text>
 
             </ScrollView>

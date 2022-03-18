@@ -30,7 +30,7 @@ export default () => {
                <View style={styles.infoObjectArea}>
                   <Text style={styles.infoObjectName}>{context.objectData.event.name}</Text>
                </View>
-               <Text style={styles.generalInfoObject}>{context.objectData.event.data}</Text>
+               <Text style={styles.generalInfoObject}>{context.objectData.event.date}</Text>
                <Text style={styles.generalInfoObject}>{context.objectData.event.hour} </Text>
                <Text style={styles.generalInfoObject}>{context.objectData.event.local} </Text>
                <Text style={styles.generalInfoObject}>{context.objectData.event.city}</Text>

@@ -34,7 +34,7 @@ export default () => {
 
    const handleExitButton = async () => {
       await api.logout();
-      dispatch({type: 'removeUser'})
+      dispatch({ type: 'removeUser' })
       navigation.reset({
          index: 1,
          routes: [{ name: 'LoginScreen' }],
@@ -56,6 +56,33 @@ export default () => {
 
 
             <View style={styles.menuArea}>
+
+               {context.userData.user.token == "master" &&
+                  <View style={styles.menuSubArea}>
+
+                     <LinearGradient
+                        colors={['#f1da9a', '#b69b4f']}
+                        style={styles.iconsBorder}
+                     >
+                        <TouchableOpacity activeOpacity={0.75} style={styles.menuIcons} onPress={() => { navigation.navigate('DioceseTab'); }}>
+                           <Image style={styles.iconLogo} source={require('../../assets/diocese.png')} />
+                           <Text style={styles.iconText}>Regional</Text>
+                        </TouchableOpacity>
+                     </LinearGradient>
+
+                     <LinearGradient
+                        colors={['#f1da9a', '#b69b4f']}
+                        style={styles.iconsBorder}
+                     >
+                        <TouchableOpacity activeOpacity={0.75} style={styles.menuIcons} onPress={redirectConsultaParoquia}>
+                           <Image style={styles.iconLogo} source={require('../../assets/paroquia.png')} />
+                           <Text style={styles.iconText}>Sub-Regional</Text>
+                        </TouchableOpacity>
+                     </LinearGradient>
+
+                  </View>
+               }
+
                <View style={styles.menuSubArea}>
 
                   <LinearGradient
@@ -121,8 +148,8 @@ export default () => {
                      style={styles.iconsBorder}
                   >
                      <TouchableOpacity activeOpacity={0.75} style={styles.menuIcons} onPress={handleExitButton}>
-                        <Image style={styles.iconLogo} source={require('../../assets/logout.png')} />
-                        <Text style={styles.iconText}>Sair</Text>
+                        <Image style={styles.iconLogo} source={require('../../assets/settings.png')} />
+                        <Text style={styles.iconText}>Configurações</Text>
                      </TouchableOpacity>
                   </LinearGradient>
 

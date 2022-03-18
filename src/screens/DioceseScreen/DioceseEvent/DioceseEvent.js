@@ -104,7 +104,7 @@ export default () => {
 
 									<View style={styles.resultTextAreaEvent}>
 										<Text style={styles.resultTextEvent}>{item.name}</Text>
-										<Text style={styles.resultSubTextEvent}>{item.data}</Text>
+										<Text style={styles.resultSubTextEvent}>{item.date}</Text>
 									</View>
 								</TouchableOpacity>
 							</View>

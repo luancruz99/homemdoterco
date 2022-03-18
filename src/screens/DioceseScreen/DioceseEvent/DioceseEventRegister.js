@@ -21,7 +21,8 @@ import { Picker } from '@react-native-picker/picker';
 import SimpleToast from 'react-native-simple-toast';
 import Background from '../../../components/background';
 import { styles } from '../../../styles';
-import states from '../../../components/States'
+import states from '../../../components/States';
+import DatePicker from 'react-native-datepicker'
 
 
 
@@ -33,10 +34,12 @@ export default () => {
     const [name, setName] = useState('');
     const [state, setState] = useState('');
     const [city, setCity] = useState('');
-    const [data, setData] = useState('');
+    const [date, setDate] = useState('');
     const [hour, setHour] = useState('');
     const [local, setLocal] = useState('');
     const [loading, setLoading] = useState(false);
+    const [hideDateText, setHideDateText] = useState(true)
+
 
     const handleRegisterButton = async () => {
 
@@ -51,12 +54,12 @@ export default () => {
                 name: yup.string().required('Digite o nome'),
                 state: yup.string().required('Escolha um estado'),
                 city: yup.string().required('Defina a cidade'),
-                data: yup.date().required('Defina a data'),
+                date: yup.string().required('Defina a data'),
                 hour: yup.string().required('Defina a hora'),
                 local: yup.string().required('Digite o local')
             })
 
-            await schema.validate({ avatar, name, state, city, data, hour, local })
+            await schema.validate({ avatar, name, state, city, date, hour, local })
 
             setLoading(true);
 
@@ -77,7 +80,7 @@ export default () => {
                 name,
                 state,
                 city,
-                data,
+                date,
                 hour,
                 local,
                 imageUrl,
@@ -126,7 +129,7 @@ export default () => {
     const resetField = () => {
         setAvatar('');
         setName('');
-        setData('');
+        setDate('');
         setState('');
         setCity('');
         setHour('');
@@ -175,18 +178,37 @@ export default () => {
                 />
 
                 <View style={styles.registerSubArea}>
-                    <TextInput
-                        style={styles.halfRegister}
-                        value={data}
-                        placeholder='Data'
-                        onChangeText={(t) => setData(t.replace(/[^0-9]/g, ''))}
-                    />
-                    <TextInput
-                        style={styles.halfRegister}
-                        value={hour}
-                        placeholder='Hora'
-                        onChangeText={(t) => setHour(t.replace(/[^0-9]/g, ''))}
-                    />
+                    <View style={styles.halfRegister}>
+                        <DatePicker
+                            date={date}
+                            mode="date"
+                            hideText={hideDateText}
+                            format="DD/MM/YYYY"
+                            showIcon={false}
+                            customStyles={{
+                                dateInput: {
+                                    borderWidth: 0,
+                                },
+                                dateText: {
+                                    fontSize: 16,
+                                    marginLeft: 5,
+                                    marginRight: 5,
+                                    alignSelf: 'flex-start',
+                                }
+                            }}
+                            onDateChange={(t) => {
+                                setDate(t)
+                                setHideDateText(false)
+                            }}
+                        />
+
+                        {hideDateText && <Text style={styles.datePickerText}>Data</Text>}
+                    </View>
+
+                    <View style={styles.halfRegister}>
+                        
+                    </View>
+                    
                 </View>
 
                 <TextInput
